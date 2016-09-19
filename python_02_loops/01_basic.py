@@ -1,10 +1,19 @@
 #! /usr/bin/python
-
 import csv
 
-with open('data.csv', 'rb') as d:
-    first  = True
-    reader = csv.reader(d)
+total = 0
+
+with open('data.csv', 'rb') as data:
+
+    isFirstRow = True
+    reader = csv.reader(data)
 
     for row in reader:
-        print row
+
+        if isFirstRow == True:
+            isFirstRow = False
+            continue
+        
+        total += int(row[3])
+
+    print total
